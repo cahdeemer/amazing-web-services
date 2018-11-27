@@ -3,7 +3,7 @@ const api = 'https://suitor-front-end-back-end.herokuapp.com'
 // You'll need an API key to access the API.
 // To get one, visit: https://suitor-front-end-back-end.herokuapp.com/api_key
 
-const apiKey = ''
+const apiKey = '0N1CFDk'
 
 const pricingEndpoints = {
   vcpu: '/prices/vcpu',
