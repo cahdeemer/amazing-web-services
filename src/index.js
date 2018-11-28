@@ -14,7 +14,7 @@ if (reactRoot !== null) {
 
 } else if (vueRoot !== null) {
   console.log('Lets do Vue!')
-  new Vue({ el: '#vue-root' })
+  //new Vue({ el: '#vue-root' })
 
 } else {
   console.log('Lets do something completely different...')

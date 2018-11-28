@@ -2,12 +2,41 @@
 <html>
 <head>
   <title>Amazing Web Services</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"> 
+  <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
 
   <!-- Un-comment one of these elements, or do your own thing -->
   <!-- <div id='react-root'></div> -->
-  <div id='vue-root'><App></App></div></div>
+  <header>
+    <section id="sect-header">
+      <div>
+        <img src="./assets/gear.png" class="header-icon" alt="read gear Amazing Web Services logo">
+        <h1>Amazing Web Services</h1>
+      </div>
+      <div>
+        <img src="./assets/icons8-gender_neutral_user_filled.svg" class="header-icon" alt="gender neutral user silhuette">
+        <p id="username">Georgia</p>
+      </div>
+    </section>
+  </header>
+
+  <div id='app'>
+
+    <section v-if="errored">
+      <p>We're sorry, we're not able to retrieve this information at the moment, please try back later</p>
+    </section>
+    <section v-else id="sect-os">
+      <h2>Select Your Operating System</h2>
+      <div>
+        <button v-for="(key, value) in osData" class="btn-os" :class="value">
+          <h3>{{value}}</h3>
+          <div class="icon-wrapper"></div>
+        </button>
+      </div>       
+    </section>
+  </div>
 
   <script src="./index.js"></script>
 </body>

@@ -1,3 +1,5 @@
+import { resolve } from "upath";
+
 const api = 'https://suitor-front-end-back-end.herokuapp.com'
 
 // You'll need an API key to access the API.
@@ -33,4 +35,5 @@ export const fetchPrices = () => {
     return prices
   })
   .catch(error => console.error(error))
+
 }
