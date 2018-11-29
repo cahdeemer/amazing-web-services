@@ -30,12 +30,60 @@
     <section v-else id="sect-os">
       <h2>Select Your Operating System</h2>
       <div>
-        <button v-for="(key, value) in osData" class="btn-os" :class="value">
-          <h3>{{value}}</h3>
+        <button v-for="(key, value, index) in osData" class="btn-os" :class="value" ref="value" @click="selectOS(index)">
+          <h4>{{value}}</h4>
           <div class="icon-wrapper"></div>
         </button>
       </div>       
     </section>
+
+    <section v-if="osSelected" id="sect-config">
+      <h2>Configure your {{oS}} VM!</h2>
+      <div class="flex-wrapper">
+        <div class="cont-two-thirds">
+          <h3>Number of CPUs</h3>
+          <div>
+            <button v-for="(key, value, index) in cpuData" class="btn-sm" :class="value" ref="value">
+              <h4>{{value}}GB</h4>
+              <p>${{key}} p/hour</p>
+            </button>
+          </div>
+          <h3>Total RAM</h3>
+          <div>
+            <button v-for="(key, value, index) in ramData" class="btn-sm" :class="value" ref="value">
+              <h4>{{value}}GB</h4>
+              <p>$ {{key}} p/hour</p>
+            </button>
+          </div>
+          <h3>Disc Space Amount</h3>
+          <div>
+            <button v-for="(key, value, index) in diskData" class="btn-sm" :class="value" ref="value">
+              <h4>{{value}}</h4>
+              <p>${{key}} p/hour</p>
+            </button>
+          </div>
+        </div>
+        <div class="cont-fourth cont-long">
+          <div class="cont-group-lg">
+            <p class="oversized-lg">4</p>
+            <p class="oversized">per month</p>
+          </div>
+          <div class="cont-group">
+            <p class="oversized-lg">5</p>
+            <p class="oversized">CPU</p>
+          </div>
+          <div class="cont-group">
+            <p class="oversized-lg">16GB</p>
+            <p class="oversized">RAM</p>
+          </div>
+          <div class="cont-group">
+            <p class="oversized-lg">80GB</p>
+            <p class="oversized">RAM</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </div>
 
   <script src="./index.js"></script>

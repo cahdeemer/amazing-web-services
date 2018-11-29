@@ -33,12 +33,36 @@ h2 {
 }
 
 h3 {
+    font-weight: 400;
+    margin: 0px 0px 15px;
+}
+
+h4 {
+    margin: 0px 0px 5px;
     color: #949393;
+    font-size: 20px;
     font-weight: 400;
     text-transform: uppercase;
 }
 
+p {
+    margin: 0px;
+    font-size: 14px;
+}
+
+.oversized {
+    font-size: 24px;
+    color: #949393;
+    text-transform: uppercase;
+}
+
+.oversized-lg {
+    font-size: 36px;
+    color: #4c4c4c;
+}
+
 #username {
+    margin: 12px 0px;
     font-size: 12px;
     font-weight: bold;
 }
@@ -54,20 +78,21 @@ h3 {
     transition: all 0.5s ease-in-out;
 }
 
-.btn-os h3{
+.btn-os h4{
     position: relative;
     height: 100%;
 }
 
+.btn-os.active,
 .btn-os:hover {
     color: #2b3432;
     border: 1px solid #0abb93;
 }
-
-.btn-os:hover > h3 {
+.btn-os.active > h4,
+.btn-os:hover > h4 {
     color: #2b3432;
 }
-
+.btn-os.active:after,
 .btn-os:hover:after {
     background-color: #2b3432;
 }
@@ -111,6 +136,14 @@ h3 {
     mask-image: url('assets/icons8-ubuntu_filled.svg') ;
 }
 
+.btn-sm {
+    position: relative;
+    height: 100px;
+    box-sizing: border-box;
+    border: 1px solid #949393;
+    border-radius: 5px;
+    transition: all 0.5s ease-in-out; 
+}
 
 
 /****** LAYOUT ******/
@@ -125,8 +158,9 @@ h3 {
     align-items: center;
 }
 
-#sect-os {
-    margin: 80px 0px 0px 0px;
+#sect-os,
+#sect-config {
+    margin: 80px 0px 120px 0px;
 }
 
 #sect-os div {
@@ -136,7 +170,44 @@ h3 {
     margin-top: 40px;
 }
 
+.cont-two-thirds {
+    width: 66%;
+    margin: 50px 0px 0px;
+}
 
+.cont-fourth {
+    width: 25%;
+}
+
+.cont-long {
+    height: 448px;
+    margin: 50px 0px 0px;
+    padding: 20px;
+    border: 1px solid #949393;
+    border-radius: 5px;
+}
+
+.cont-two-thirds div{
+    display: grid;
+	grid-template-columns: repeat(5, 1fr);
+    grid-gap: 1rem;
+    margin-bottom: 40px;
+}
+
+.flex-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cont-group-lg {
+    padding: 0 0 20px;
+    text-align: center;
+    border-bottom: 1px solid #949393;
+}
+
+.cont-group {
+    margin: 20px 0 40px;
+}
 
 /***** MEDIA *****/
 
@@ -158,6 +229,7 @@ h3 {
     border: 1px solid #949393;
 }
 
+.btn-os.active > .icon-wrapper,
 .btn-os:hover > .icon-wrapper {
     border: 1px solid #0abb93;
 }
