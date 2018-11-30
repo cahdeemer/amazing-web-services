@@ -6,7 +6,7 @@ import ReactApp from './ReactApp'
 import VueApp from './VueApp'
 
 const reactRoot = document.getElementById('react-root')
-const vueRoot = document.getElementById('#app')
+const vueRoot = document.getElementById('app')
 
 if (reactRoot !== null) {
   console.log('Lets do React!')

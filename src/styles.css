@@ -1,7 +1,11 @@
+/***** IMPORTS *****/
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+
+
 /**** ELEMENTS *****/
 
 * {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Roboto', Helvetica, Arial, sans-serif;
 }
 
 header {
@@ -49,7 +53,7 @@ h3 {
 
 h4 {
     margin: 0px 0px 5px;
-    color: #949393;
+    color: #2b3432;
     font-size: 20px;
     font-weight: 400;
     text-transform: uppercase;
@@ -58,6 +62,7 @@ h4 {
 p {
     margin: 0px;
     font-size: 14px;
+    color: #4c4c4c;
 }
 
 .oversized {
@@ -79,27 +84,30 @@ p {
 
 /***** FORMS, BTNS, FIELDS *****/
 
+.btn {
+    border-radius: 5px;
+    transition: all 0.25s ease-in-out;
+}
+
 .btn-os {
     position: relative;
     height: 200px;
     box-sizing: border-box;
     border: 1px solid #949393;
-    border-radius: 5px;
-    transition: all 0.5s ease-in-out;
 }
 
 .btn-os h4{
     position: relative;
     height: 100%;
+    margin: 10px 0 0;
 }
 
-.btn-os.active,
-.btn-os:hover,
-.btn-sm.active,
-.btn-sm.hover {
+.btn.active,
+.btn:hover {
     color: #2b3432;
     border: 1px solid #0abb93;
 }
+
 .btn-os.active > h4,
 .btn-os:hover > h4 {
     color: #2b3432;
@@ -153,8 +161,6 @@ p {
     height: 100px;
     box-sizing: border-box;
     border: 1px solid #949393;
-    border-radius: 5px;
-    transition: all 0.5s ease-in-out; 
 }
 
 .btn-green {
@@ -172,7 +178,7 @@ p {
 .btn-green:hover {
     background: white;
     border: 1px solid #0abb93;
-    color: #0abb93;
+    color: #2b3432;
 }
 
 :focus {
@@ -184,6 +190,7 @@ p {
     cursor: not-allowed;
     border: 1px solid #949393;
     color: #949393;
+    opacity: 0.5;
 }
 
 /****** LAYOUT ******/

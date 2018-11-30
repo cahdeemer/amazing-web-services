@@ -165,8 +165,6 @@ new Vue({
       this.cpuCost = this.formatPrice(key);
       this.calculateMonthlyCPU();
       this.calculateTotalMonthlyCost();
-      console.log(index);
-      console.log(this.$refs.value);
       this.$refs.value[index+4].classList.add('active');
       if (index === 0) {
         this.$refs.value[5].classList.remove('active');
@@ -276,28 +274,32 @@ new Vue({
     calculateMonthlyCPU() {
       let cost = this.cpuCost;
       this.cpuMonthlyCost = cost * 720;
-      console.log("CPU monthly cost" + this.cpuMonthlyCost); 
     },
     calculateMonthlyRAM() {
       let cost = this.ramCost;
       this.ramMonthlyCost = cost * 720;
-      console.log("RAM " + this.ramMonthlyCost); 
     },
     calculateMonthlyDisk() {
       let cost = this.diskCost;
       this.diskMonthlyCost = cost * 720;
-      console.log("Disk " + this.diskMonthlyCost); 
-
     },
     calculateTotalMonthlyCost() {
       if (this.oS === 'Rhel') {
-        let surcharge = 0.0007;
+        let surcharge = this.osData.rhel.base * 0.001;
         let monthlySurcharge = surcharge * 720;
         this.monthlyCost = this.cpuMonthlyCost + this.ramMonthlyCost + this.diskMonthlyCost + monthlySurcharge;
       } else if (this.oS === 'Fedora') {
-        let surcharge = 0.0001;
+        let surcharge = this.osData.fedora.base * 0.001;
         let monthlySurcharge = surcharge * 720;
-        this.monthlyCost = this.cpuMonthlyCost + this.ramMonthlyCost + this.diskMonthlyCost;
+        this.monthlyCost = this.cpuMonthlyCost + this.ramMonthlyCost + this.diskMonthlyCost + monthlySurcharge;
+      } else if (this.oS === 'Windows') {
+        let surcharge = this.osData.windows.base * 0.001;
+        let monthlySurcharge = surcharge * 720;
+        this.monthlyCost = this.cpuMonthlyCost + this.ramMonthlyCost + this.diskMonthlyCost + monthlySurcharge;
+      }  else if (this.oS === 'Ubuntu') {
+        let surcharge = this.osData.ubuntu.base * 0.001;
+        let monthlySurcharge = surcharge * 720;
+        this.monthlyCost = this.cpuMonthlyCost + this.ramMonthlyCost + this.diskMonthlyCost + monthlySurcharge;
       } else {
         this.monthlyCost = this.cpuMonthlyCost + this.ramMonthlyCost + this.diskMonthlyCost;
       }
