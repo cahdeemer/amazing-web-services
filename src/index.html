@@ -39,49 +39,73 @@
 
     <section v-if="osSelected" id="sect-config">
       <h2>Configure your {{oS}} VM!</h2>
-      <div class="flex-wrapper">
-        <div class="cont-two-thirds">
+      <div class="flex-wrapper flex-between">
+        <div class="container cont-two-thirds">
           <h3>Number of CPUs</h3>
           <div>
-            <button v-for="(key, value, index) in cpuData" class="btn-sm" :class="value" ref="value">
-              <h4>{{value}}GB</h4>
-              <p>${{key}} p/hour</p>
+            <button v-for="(key, value, index) in cpuData" class="btn-sm" :class="'cpu'+value" ref="value" @click="selectCPU(key, value, index)">
+              <h4>{{value}}</h4>
+              <p v-if="oS === 'Windows'">${{ formatPrice(key + 0.7)}} p/hour</p>
+              <p v-else-if="oS === 'Fedora'">${{formatPrice(key + 0.2)}} p/hour</p>
+              <p v-else>${{ formatPrice(key) }} p/hour</p>
             </button>
           </div>
           <h3>Total RAM</h3>
           <div>
-            <button v-for="(key, value, index) in ramData" class="btn-sm" :class="value" ref="value">
+            <button v-for="(key, value, index) in ramData" class="btn-sm" :class="value" ref="value" @click="selectRAM(key, value, index)">
               <h4>{{value}}GB</h4>
-              <p>$ {{key}} p/hour</p>
+              <p>$ {{ formatPrice(key)}} p/hour</p>
             </button>
           </div>
           <h3>Disc Space Amount</h3>
           <div>
-            <button v-for="(key, value, index) in diskData" class="btn-sm" :class="value" ref="value">
-              <h4>{{value}}</h4>
-              <p>${{key}} p/hour</p>
+            <button v-for="(key, value, index) in diskData" class="btn-sm" :class="value" ref="value" @click="selectDisk(key, value, index)">
+              <h4>{{value}}GB</h4>
+              <p>${{ formatPrice(key) }} p/hour</p>
             </button>
           </div>
         </div>
-        <div class="cont-fourth cont-long">
+        <div class="container cont-fourth cont-long">
           <div class="cont-group-lg">
-            <p class="oversized-lg">4</p>
+            <p class="oversized-lg">
+              <span v-if="cpu || ram || disk">
+                ${{ formatPrice(monthlyCost) }}
+              </span>
+              <span v-else>-</span>
+            </p>
             <p class="oversized">per month</p>
           </div>
           <div class="cont-group">
-            <p class="oversized-lg">5</p>
+            <p class="oversized-lg">
+              <span v-if="cpu">{{ cpu }}</span>
+              <span v-else>-</span>
+            </p>
             <p class="oversized">CPU</p>
           </div>
           <div class="cont-group">
-            <p class="oversized-lg">16GB</p>
+            <p class="oversized-lg">
+                <span v-if="ram">{{ ram }}GB</span>
+                <span v-else>-</span>
+            </p>
             <p class="oversized">RAM</p>
           </div>
           <div class="cont-group">
-            <p class="oversized-lg">80GB</p>
-            <p class="oversized">RAM</p>
+            <p class="oversized-lg">
+                <span v-if="disk">{{ disk }}GB</span>
+                <span v-else>-</span>
+            </p>
+            <p class="oversized">Disk</p>
           </div>
         </div>
       </div>
+    </section>
+    <section id="sect-name" v-if="cpu && ram && disk">
+        <h2>Name Your VM</h2>
+        <div class="flex-wrapper flex-center container">
+        <label for="vmName" class="sr-only">Virtual Machine Name</label>
+        <input type="text" name="vmName" id="vmName" :placeholder="oS + '-' + cpu + '-' + ram + '-' + disk">
+        <button class="btn-green" type="submit">Build Virtual Machines</button>
+        </div>
     </section>
 
   </div>

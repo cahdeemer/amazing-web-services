@@ -15,6 +15,16 @@ section {
   width: 60%;
 }
 
+input {
+    width: 250px;
+    margin-right: 10px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #949393;
+    border-radius: 5px;
+
+}
+
 /**** LISTS *****/
 
 
@@ -84,7 +94,9 @@ p {
 }
 
 .btn-os.active,
-.btn-os:hover {
+.btn-os:hover,
+.btn-sm.active,
+.btn-sm.hover {
     color: #2b3432;
     border: 1px solid #0abb93;
 }
@@ -145,6 +157,34 @@ p {
     transition: all 0.5s ease-in-out; 
 }
 
+.btn-green {
+    padding: 12px 30px;
+    background:#0abb93;
+    border: 1px solid #0abb93;
+    border-radius: 5px;
+    color: white;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+    transition: all 0.25s ease-in-out;
+}
+
+.btn-green:hover {
+    background: white;
+    border: 1px solid #0abb93;
+    color: #0abb93;
+}
+
+:focus {
+    outline: #0abb93 auto 3px;
+}
+
+:disabled {
+    user-select: none;
+    cursor: not-allowed;
+    border: 1px solid #949393;
+    color: #949393;
+}
 
 /****** LAYOUT ******/
 
@@ -159,8 +199,13 @@ p {
 }
 
 #sect-os,
-#sect-config {
-    margin: 80px 0px 120px 0px;
+#sect-config,
+#sect-name {
+    margin: 80px 0 120px 0;
+}
+
+#sect-name {
+    margin: 0 0 80px;
 }
 
 #sect-os div {
@@ -170,9 +215,12 @@ p {
     margin-top: 40px;
 }
 
+.container {
+    margin: 50px 0 0;
+}
+
 .cont-two-thirds {
     width: 66%;
-    margin: 50px 0px 0px;
 }
 
 .cont-fourth {
@@ -181,7 +229,6 @@ p {
 
 .cont-long {
     height: 448px;
-    margin: 50px 0px 0px;
     padding: 20px;
     border: 1px solid #949393;
     border-radius: 5px;
@@ -196,7 +243,14 @@ p {
 
 .flex-wrapper {
     display: flex;
+}
+
+.flex-between {
     justify-content: space-between;
+}
+
+.flex-center {
+    justify-content: center;
 }
 
 .cont-group-lg {
@@ -234,3 +288,14 @@ p {
     border: 1px solid #0abb93;
 }
 
+/***** A11Y *****/
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
